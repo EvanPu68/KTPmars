@@ -1,3 +1,11 @@
+#' Title
+#'
+#' @param object 
+#'
+#' @return
+#' @export
+#'
+#' @examples summary<-summary(testmars)
 summary.mars<-function(object){
   print(summary.lm(object))
   for (i in 1:length(names(object$B))){

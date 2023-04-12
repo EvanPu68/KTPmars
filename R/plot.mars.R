@@ -1,3 +1,11 @@
+#' Title
+#'
+#' @param object 
+#'
+#' @return plots
+#' @export
+#'
+#' @examples plot<-plot(testmars)
 plot.mars <- function(object) {
   fitted <- fitted(object)
   resid <- residuals(object)

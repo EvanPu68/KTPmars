@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param object 
+#' @param newdata 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 predict.mars <- function(object,newdata) {
   if(missing(newdata) || is.null(newdata)) { #if new data is missing
     B <- as.matrix(object$B) # coerce B to matrix for matrix multiplication
