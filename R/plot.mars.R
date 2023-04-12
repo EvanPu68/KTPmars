@@ -1,9 +1,7 @@
 plot.mars <- function(object) {
   fitted <- fitted(object)
   resid <- residuals(object)
-  #predicted <- predict.mars(object)
-  #plot(x[,1], y, col = "blue", pch = 20, main = "Observed vs. Fitted")
-  plot(x[,1], fitted, col = "red")
+  par(mfrow=c(1,3))
   plot(fitted, resid, col = "blue", pch = 20, main = "Residuals vs. Fitted Values", xlab="Fitted Values",
        ylab="Residuals")
   abline(h = 0, col = "red")
