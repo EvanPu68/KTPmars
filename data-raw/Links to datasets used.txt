@@ -1,0 +1,7 @@
+Links to data sets used
+
+https://archive.ics.uci.edu/ml/datasets/Concrete+Compressive+Strength
+
+https://archive.ics.uci.edu/ml/datasets/QSAR+fish+toxicity
+
+https://archive.ics.uci.edu/ml/datasets/Yacht+Hydrodynamics
