@@ -1,8 +1,8 @@
 #' Title
 #'
-#' @param object 
+#' @param object a mars object
 #'
-#' @return
+#' @return lm summary plus information of basis function
 #' @export
 #'
 #' @examples summary<-summary(testmars)
