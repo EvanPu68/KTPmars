@@ -1,4 +1,4 @@
-#' A test dataset for the mars package.
+#' A test dataset for the KTPmars package.
 #'
 #' A dataset of size N=100 with n=10 explanatory variables,
 #' and a response variable that depends on only the first two

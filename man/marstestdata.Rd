@@ -3,7 +3,7 @@
 \docType{data}
 \name{marstestdata}
 \alias{marstestdata}
-\title{A test dataset for the mars package.}
+\title{A test dataset for the KTPmars package.}
 \format{
 A data frame with 100 rows and 11 variables:
 \describe{

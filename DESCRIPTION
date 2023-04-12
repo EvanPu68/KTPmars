@@ -1,7 +1,10 @@
 Package: KTPmars
 Title: Multivariate Adaptive Regression Spline Referred to Jerome H. Friedman
 Version: 0.0.0.9000
-Authors@R: Anthony Kim, Zhiran Tong, Yifan Pu
+Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Collabortors: Anthony Kim, Zhiran Tong, Yifan Pu
 Description: What the package does (one paragraph).
 License: GPL (>= 3)
 Encoding: UTF-8

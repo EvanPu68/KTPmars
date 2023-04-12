@@ -21,5 +21,5 @@ an object of class 'mars'
 Fit Friedman's Multivariate Adaptive Regression Splines (MARS) model.
 }
 \examples{
-mm <- mars(y~.,data=marstestdata)
+mm <- mars(ConcreteCompressiveStrength~.,data=concrete)
 }

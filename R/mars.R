@@ -11,8 +11,8 @@
 #' @export
 #'
 #' @examples
-#' mm <- mars(y~.,data=marstestdata)
-#' @import stats
+#' mm <- mars(ConcreteCompressiveStrength~.,data=concrete)
+#' @import stats 
 
 mars <- function(formula,data,control = mars.control()) {
   cc <- match.call() # save the call
