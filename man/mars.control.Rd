@@ -13,7 +13,7 @@ Default value is 2.}
 \item{d}{The parameter used in calculation of Generalized cross-validation.
 Friedman suggests that d = 3 works well, thus default value is 3.}
 
-\item{trace}{A True or False value that allows user to see the candidate
+\item{trace}{A True or False value that allows user to see the candidate subset
 basis functions that might reduce GCV in backward selection procedure similar
 to linear regression modeling.}
 }

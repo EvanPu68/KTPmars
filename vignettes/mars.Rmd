@@ -24,9 +24,9 @@ Mars Function:
 
 ```{r}
 mc <- mars.control(Mmax = 10)
-concrete <-mars(ConcreteCompressiveStrength~.,data=concrete,control = mc)
-toxic <-mars(LC50~.,data=fishToxicity, control = mc)
-yacht <-mars(RRPUWOD~.,data=yacht, control = mc)
+concretemars <-mars(ConcreteCompressiveStrength~.,data=concrete,control = mc)
+toxicmars <-mars(LC50~.,data=fishToxicity, control = mc)
+yachtmars <-mars(RRPUWOD~.,data=yacht, control = mc)
 ```
 
 <p>
@@ -34,9 +34,9 @@ yacht <-mars(RRPUWOD~.,data=yacht, control = mc)
 Summary Function:
 
 ```{r}
-summary(concrete)
-summary(toxic)
-summary(yacht)
+summary(concretemars)
+summary(toxicmars)
+summary(yachtmars)
 ```
 
 <p>
@@ -44,9 +44,9 @@ summary(yacht)
 Print Function:
 
 ```{r}
-print(concrete)
-print(toxic)
-print(yacht)
+print(concretemars)
+print(toxicmars)
+print(yachtmars)
 ```
 
 <p>
@@ -54,9 +54,9 @@ print(yacht)
 Predict Function:
 
 ```{r}
-predict(concrete)
-predict(toxic)
-predict(yacht)
+predict(concretemars)
+predict(toxicmars)
+predict(yachtmars)
 ```
 
 <p>
@@ -64,9 +64,9 @@ predict(yacht)
 Anova Function:
 
 ```{r}
-anova(concrete)
-anova(toxic)
-anova(yacht)
+anova(concretemars)
+anova(toxicmars)
+anova(yachtmars)
 ```
 
 <p>
@@ -74,7 +74,7 @@ anova(yacht)
 Plot Function:
 
 ```{r, fig.width=8, fig.height=4}
-plot(concrete)
-plot(toxic)
-plot(yacht)
+plot(concretemars)
+plot(toxicmars)
+plot(yachtmars)
 ```

@@ -2,17 +2,80 @@
 #'
 #' Fit Friedman's Multivariate Adaptive Regression Splines (MARS) model.
 #'
-#' @param formula an R formula
-#' @param data a data frame containing the data, including response and
-#' predictor variables
-#' @param control an object of class 'mars.control'
+#' @param formula an object of class 'formula': Specifically, a linear regression
+#' formula that has the response variable's name and indicates the predictors.
+#' It is similar to the formula used in lm().
+#' @param data a data frame containing the variables, including response and
+#' predictor variables.
+#' @param control an object of class 'mars.control': It is a list
+#' containing information of Mmax (The maximum basis function we want to add in
+#' forward selection of linear model fitting, it must be an even integer),
+#' d (The parameter used in GCV
+#' criterion, Friedman suggests d = 3, which is set to the default value of d),
+#' trace (A logical value that allows user to trace the reduced basis
+#' functions in backward selection in each iteration). You can set up a
+#' 'mars.control' object using the helping function mars.control(), see help
+#' file of mars.control() for further information.
 #'
-#' @return an object of class 'mars'
+#' @return An object of class 'mars', which is similar to an object of class
+#' 'lm', with extra information on basis functions.
+#'
+#' An object class of 'mars' is a list containing the following information:
+#' \itemize{
+#' \item{call:}{ the matched function call of mars().}
+#' \item{formula:}{ formula used in function call of mars().}
+#' \item{y:}{ the column vector of response variable.}
+#' \item{B:}{ a matrix that contains information of basis functions determined by
+#' forward and backward selection, which is the data used in fitting the
+#' linear regression model in mars(). Each column of basis functions are
+#' products of hinge functions with information of sign, number of predictor and
+#' split point given in Bfuncs in order.}
+#' \item{Bfuncs:}{ a list containing information on how each basis function
+#' is created, each element of Bfuncs correspond to the hinge functions that are
+#' used to create each column of B. Inside each element of Bfuncs, there could be
+#' null, 1 or multiples rows. Each row represents information of each hinge function.}
+#' \item{x_names:}{ a character vector of predictors' names.}
+#' \item{coefficients:}{ a vector of the coefficients.}
+#' \item{residuals:}{ a vector of difference between observed response and fitted response.}
+#' \item{effects:}{ a numeric vector of orthogonal effects from the fitted model.}
+#' \item{rank:}{ the numeric rank of the fitted linear model.}
+#' \item{fitted.values:}{ the fitted mean values.}
+#' \item{assign:}{ a vector from 1 to the value of rank.}
+#' \item{qr:}{ a list of qr decomposition information.}
+#' \item{df.residual:}{ the residual degree of freedom.}
+#' \item{xlevels:}{ a record of the levels of the factors used in fitting.}
+#' \item{call:}{ the match lm function call using basis functions}
+#' \item{terms:}{ the 'term' object that is extracted from basis functions and formula}
+#' \item{model:}{ the model frame used}
+#' }
+#'
 #' @export
 #'
 #' @examples
 #' mm <- mars(ConcreteCompressiveStrength~.,data=concrete)
-#' @import stats 
+#' @import stats
+#'
+#' @references
+#'
+#' Paper(s):
+#' Multivariate Adaptive Regression Splines
+#'
+#' Author(s): Jerome H. Friedman
+#' Source: The Annals of Statistics , Mar., 1991, Vol. 19, No. 1 (Mar., 1991), pp. 1-67
+#'
+#' Published by: Institute of Mathematical Statistics Stable
+#'
+#' URL: https://www.jstor.org/stable/2241837
+#'
+#' Rdocumentation:
+#'
+#' https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm
+#'
+#' https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/effects
+#'
+#' https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/terms
+#'
+#'
 
 mars <- function(formula,data,control = mars.control()) {
   cc <- match.call() # save the call
@@ -38,17 +101,29 @@ mars <- function(formula,data,control = mars.control()) {
 }
 
 
-#' Title
+#' Forward stepwise function based on Algorithm 2 by Freidman
 #'
-#' @param y y
-#' @param x x
-#' @param control cc
+#' @param y the vector of response variable used
+#' @param x the model matrix used
+#' @param control an object of class 'mars.control': a list of Mmax (), d, and trace
 #'
 #' @return a list
 #' @export
 #'
 #' @examples
 #' fwd <- fwd_stepwise(y=marstestdata$y,x=marstestdata[,-1])
+#'
+#' @references
+#'
+#' Paper(s):
+#' Multivariate Adaptive Regression Splines
+#'
+#' Author(s): Jerome H. Friedman
+#' Source: The Annals of Statistics , Mar., 1991, Vol. 19, No. 1 (Mar., 1991), pp. 1-67
+#'
+#' Published by: Institute of Mathematical Statistics Stable
+#'
+#' URL: https://www.jstor.org/stable/2241837
 #'
 fwd_stepwise <- function(y,x,control=mars.control()){
   #---------------------------------------------------
@@ -235,7 +310,7 @@ validate_mars.control <- function(control) {
 #' Default value is 2.
 #' @param d The parameter used in calculation of Generalized cross-validation.
 #' Friedman suggests that d = 3 works well, thus default value is 3.
-#' @param trace A True or False value that allows user to see the candidate
+#' @param trace A True or False value that allows user to see the candidate subset
 #' basis functions that might reduce GCV in backward selection procedure similar
 #' to linear regression modeling.
 #'

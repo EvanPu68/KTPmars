@@ -2,24 +2,35 @@
 % Please edit documentation in R/mars.R
 \name{fwd_stepwise}
 \alias{fwd_stepwise}
-\title{Title}
+\title{Forward stepwise function based on Algorithm 2 by Freidman}
 \usage{
 fwd_stepwise(y, x, control = mars.control())
 }
 \arguments{
-\item{y}{y}
+\item{y}{the vector of response variable used}
 
-\item{x}{x}
+\item{x}{the model matrix used}
 
-\item{control}{cc}
+\item{control}{an object of class 'mars.control': a list of Mmax (), d, and trace}
 }
 \value{
 a list
 }
 \description{
-Title
+Forward stepwise function based on Algorithm 2 by Freidman
 }
 \examples{
 fwd <- fwd_stepwise(y=marstestdata$y,x=marstestdata[,-1])
 
+}
+\references{
+Paper(s):
+Multivariate Adaptive Regression Splines
+
+Author(s): Jerome H. Friedman
+Source: The Annals of Statistics , Mar., 1991, Vol. 19, No. 1 (Mar., 1991), pp. 1-67
+
+Published by: Institute of Mathematical Statistics Stable
+
+URL: https://www.jstor.org/stable/2241837
 }

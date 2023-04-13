@@ -3,6 +3,7 @@
 S3method(anova,mars)
 S3method(plot,mars)
 S3method(predict,mars)
+S3method(print,mars)
 S3method(summary,mars)
 export(fwd_stepwise)
 export(mars)

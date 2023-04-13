@@ -7,7 +7,7 @@
 \method{summary}{mars}(object)
 }
 \arguments{
-\item{a}{mars object}
+\item{object}{a mars object}
 }
 \value{
 lm summary plus information of basis function
