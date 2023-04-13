@@ -33,7 +33,7 @@
 #'
 anova.mars <- function(object) {
   fit <- lm(y~.-1,data=data.frame(y=object$y,object$B))
-  anova(fit)
+  print(anova(fit))
   for (i in 1:length(names(object$B))){
     cat(names(object$B)[[i]], ":","\n")
     if(i == 1){
