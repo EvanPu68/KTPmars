@@ -18,7 +18,7 @@ predictor variables.}
 containing information of Mmax (The maximum basis function we want to add in
 forward selection of linear model fitting, it must be an even integer),
 d (The parameter used in GCV
-criterion, Friedman suggests d = 3, which is set to the default value of d),
+criterion in LOF, Friedman suggests d = 3, which is set to the default value of d),
 trace (A logical value that allows user to trace the reduced basis
 functions in backward selection in each iteration). You can set up a
 'mars.control' object using the helping function mars.control(), see help
@@ -52,9 +52,9 @@ null, 1 or multiples rows. Each row represents information of each hinge functio
 \item{qr:}{ a list of qr decomposition information.}
 \item{df.residual:}{ the residual degree of freedom.}
 \item{xlevels:}{ a record of the levels of the factors used in fitting.}
-\item{call:}{ the match lm function call using basis functions}
-\item{terms:}{ the 'term' object that is extracted from basis functions and formula}
-\item{model:}{ the model frame used}
+\item{call:}{ the match lm function call using basis functions.}
+\item{terms:}{ the 'term' object that is extracted from basis functions and formula.}
+\item{model:}{ the model frame used.}
 }
 }
 \description{
@@ -64,15 +64,29 @@ Fit Friedman's Multivariate Adaptive Regression Splines (MARS) model.
 mm <- mars(ConcreteCompressiveStrength~.,data=concrete)
 }
 \references{
-Paper(s):
-Multivariate Adaptive Regression Splines
+\enumerate{
+\item 
+}
+
+Paper: Multivariate Adaptive Regression Splines
 
 Author(s): Jerome H. Friedman
+
 Source: The Annals of Statistics , Mar., 1991, Vol. 19, No. 1 (Mar., 1991), pp. 1-67
 
 Published by: Institute of Mathematical Statistics Stable
 
 URL: https://www.jstor.org/stable/2241837
+\enumerate{
+\item 
+}
+
+Github repo of STAT 360 by Becky Lin:
+
+https://github.com/Becky07/STAT360
+\enumerate{
+\item 
+}
 
 Rdocumentation:
 

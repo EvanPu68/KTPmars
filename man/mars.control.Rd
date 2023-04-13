@@ -2,7 +2,7 @@
 % Please edit documentation in R/mars.R
 \name{mars.control}
 \alias{mars.control}
-\title{Contructor for 'mars.control' objects}
+\title{Helper for 'mars.control' objects}
 \usage{
 mars.control(Mmax = 2, d = 3, trace = FALSE)
 }
@@ -14,8 +14,8 @@ Default value is 2.}
 Friedman suggests that d = 3 works well, thus default value is 3.}
 
 \item{trace}{A True or False value that allows user to see the candidate subset
-basis functions that might reduce GCV in backward selection procedure similar
-to linear regression modeling.}
+basis functions that might reduce LOF with GCV criterion in backward selection
+procedure similar to linear regression modeling.}
 }
 \value{
 an object of class 'mars.control', that is a list of parameters
@@ -26,4 +26,27 @@ parameters used in the model fitting procedure.
 }
 \examples{
 mc<-mars.control(Mmax=10,d=3,trace=FALSE)
+
+}
+\references{
+\enumerate{
+\item 
+}
+
+Paper: Multivariate Adaptive Regression Splines
+
+Author(s): Jerome H. Friedman
+
+Source: The Annals of Statistics , Mar., 1991, Vol. 19, No. 1 (Mar., 1991), pp. 1-67
+
+Published by: Institute of Mathematical Statistics Stable
+
+URL: https://www.jstor.org/stable/2241837
+\enumerate{
+\item 
+}
+
+Github repo of STAT 360 by Becky Lin:
+
+https://github.com/Becky07/STAT360
 }
