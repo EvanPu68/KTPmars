@@ -73,7 +73,7 @@ anova(yacht)
 
 Plot Function:
 
-```{r}
+```{r, fig.width=8, fig.height=4}
 plot(concrete)
 plot(toxic)
 plot(yacht)
