@@ -103,15 +103,26 @@ mars <- function(formula,data,control = mars.control()) {
 
 #' Forward stepwise function based on Algorithm 2 by Freidman
 #'
-#' @param y the vector of response variable used
-#' @param x the model matrix used
-#' @param control an object of class 'mars.control': a list of Mmax (), d, and trace
+#' @param y the vector of response variable used.
+#' @param x the model matrix used.
+#' @param control an object of class 'mars.control': a list of Mmax, d, and trace,
+#' see helper file mars.control() for more information.
 #'
-#' @return a list
+#' @return a list containing the following information:
+#' \itemize{
+#' \item{y:}{ the column vector of response variable.}
+#' \item{B:}{ a matrix that contains information of basis functions determined by
+#' forward selection. Each column of basis functions are
+#' products of hinge functions with information of sign, number of predictor and
+#' split point given in Bfuncs in order.}
+#' \item{Bfuncs:}{ a list containing information on how each basis function
+#' is created, each element of Bfuncs correspond to the hinge functions that are
+#' used to create each column of B. Inside each element of Bfuncs, there could be
+#' null, 1 or multiples rows. Each row represents information of each hinge function.}
 #' @export
 #'
 #' @examples
-#' fwd <- fwd_stepwise(y=marstestdata$y,x=marstestdata[,-1])
+#' fwd <- fwd_stepwise(y=concrete$y,x=marstestdata[,-1])
 #'
 #' @references
 #'
