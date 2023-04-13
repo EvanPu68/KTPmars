@@ -64,9 +64,7 @@ Fit Friedman's Multivariate Adaptive Regression Splines (MARS) model.
 mm <- mars(ConcreteCompressiveStrength~.,data=concrete)
 }
 \references{
-\enumerate{
-\item 
-}
+i)
 
 Paper: Multivariate Adaptive Regression Splines
 
@@ -77,16 +75,14 @@ Source: The Annals of Statistics , Mar., 1991, Vol. 19, No. 1 (Mar., 1991), pp. 
 Published by: Institute of Mathematical Statistics Stable
 
 URL: https://www.jstor.org/stable/2241837
-\enumerate{
-\item 
-}
+
+ii)
 
 Github repo of STAT 360 by Becky Lin:
 
 https://github.com/Becky07/STAT360
-\enumerate{
-\item 
-}
+
+iii)
 
 Rdocumentation:
 

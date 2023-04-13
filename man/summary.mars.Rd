@@ -2,19 +2,42 @@
 % Please edit documentation in R/summary.mars.R
 \name{summary.mars}
 \alias{summary.mars}
-\title{Title}
+\title{Summary implementatioN - S3Method for an object of class 'mars'}
 \usage{
 \method{summary}{mars}(object)
 }
 \arguments{
-\item{object}{a mars object}
+\item{object}{an object of class 'mars'.}
 }
 \value{
-lm summary plus information of basis function
+prints summary() information similar to an object of class 'lm', with
+information of basis functions
 }
 \description{
-Title
+Summary implementatioN - S3Method for an object of class 'mars'
 }
 \examples{
-summary<-summary(testmars)
+mm<-mars(ConcreteCompressiveStrength~.,data=concrete,control = mars.control(
+Mmax=10,d=3,trace=FALSE))
+tsummary <- summary(mm)
+
+}
+\references{
+i)
+
+Paper: Multivariate Adaptive Regression Splines
+
+Author(s): Jerome H. Friedman
+
+Source: The Annals of Statistics , Mar., 1991, Vol. 19, No. 1 (Mar., 1991), pp. 1-67
+
+Published by: Institute of Mathematical Statistics Stable
+
+URL: https://www.jstor.org/stable/2241837
+
+ii)
+
+Github repo of STAT 360 by Becky Lin:
+
+https://github.com/Becky07/STAT360
 }

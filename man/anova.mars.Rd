@@ -2,7 +2,7 @@
 % Please edit documentation in R/anova.mars.R
 \name{anova.mars}
 \alias{anova.mars}
-\title{anova implementation - S3Method for an object of class 'mars'}
+\title{Anova implementation - S3Method for an object of class 'mars'}
 \usage{
 \method{anova}{mars}(object)
 }
@@ -14,9 +14,30 @@ anova information regarding the mars object and information of Basis
 functions.
 }
 \description{
-anova implementation - S3Method for an object of class 'mars'
+Anova implementation - S3Method for an object of class 'mars'
 }
 \examples{
-mm<-mars(ConcreteCompressiveStrength~.,data=concrete,mar.)
-anova(mm)
+mm<-mars(ConcreteCompressiveStrength~.,data=concrete,control = mars.control(
+Mmax=10,d=3,trace=FALSE))
+output <- anova(mm)
+
+}
+\references{
+i)
+
+Paper: Multivariate Adaptive Regression Splines
+
+Author(s): Jerome H. Friedman
+
+Source: The Annals of Statistics , Mar., 1991, Vol. 19, No. 1 (Mar., 1991), pp. 1-67
+
+Published by: Institute of Mathematical Statistics Stable
+
+URL: https://www.jstor.org/stable/2241837
+
+ii)
+
+Github repo of STAT 360 by Becky Lin:
+
+https://github.com/Becky07/STAT360
 }

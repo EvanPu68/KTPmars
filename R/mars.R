@@ -57,7 +57,7 @@
 #'
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -69,13 +69,13 @@
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
 #' https://github.com/Becky07/STAT360
 #'
-#' 3.
+#' iii)
 #'
 #' Rdocumentation:
 #'
@@ -138,7 +138,7 @@ mars <- function(formula,data,control = mars.control()) {
 #'
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -150,7 +150,7 @@ mars <- function(formula,data,control = mars.control()) {
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
@@ -255,7 +255,7 @@ fwd_stepwise <- function(y,x,control=mars.control()){
 #'
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -267,7 +267,7 @@ fwd_stepwise <- function(y,x,control=mars.control()){
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
@@ -333,7 +333,7 @@ bwd_stepwise<-function(fwd,control){
 #'
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -345,7 +345,7 @@ bwd_stepwise<-function(fwd,control){
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
@@ -377,7 +377,7 @@ init_B <- function(N,Mmax) {
 #'
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -389,7 +389,7 @@ init_B <- function(N,Mmax) {
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
@@ -424,7 +424,7 @@ LOF <- function(form,data,control) {
 #'
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -436,7 +436,7 @@ LOF <- function(form,data,control) {
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
@@ -464,7 +464,7 @@ h <- function(x,s,t) { # hinge function
 #'
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -476,7 +476,7 @@ h <- function(x,s,t) { # hinge function
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
@@ -508,7 +508,7 @@ split_points <- function(xvar,Bm) {
 #'
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -520,7 +520,7 @@ split_points <- function(xvar,Bm) {
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
@@ -544,7 +544,7 @@ new_mars.control <- function(control) {
 #' validmc <- validate_mars.control(list(Mmax=10,d=3,trace=TRUE))
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -556,7 +556,7 @@ new_mars.control <- function(control) {
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
@@ -602,7 +602,7 @@ validate_mars.control <- function(control) {
 #'
 #' @references
 #'
-#' 1.
+#' i)
 #'
 #' Paper: Multivariate Adaptive Regression Splines
 #'
@@ -614,7 +614,7 @@ validate_mars.control <- function(control) {
 #'
 #' URL: https://www.jstor.org/stable/2241837
 #'
-#' 2.
+#' ii)
 #'
 #' Github repo of STAT 360 by Becky Lin:
 #'
