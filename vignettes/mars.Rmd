@@ -1,5 +1,5 @@
 ---
-title: "mars"
+title: "MARS Documentation"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{mars}
@@ -7,13 +7,51 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
+```{r, include = FALSE, echo=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
-```{r setup}
+```{r setup, echo=FALSE}
 library(KTPmars)
+```
+<p>Mars Function:
+```{r}
+mc <- mars.control(Mmax = 10)
+concrete <-mars(ConcreteCompressiveStrength~.,data=concrete)
+toxic <-mars(LC50~.,data=fishToxicity)
+yacht <-mars(RRPUWOD~.,data=yacht)
+```
+
+<p>Summary Function:
+```{r}
+summary(concrete)
+summary(toxic)
+summary(yacht)
+```
+<p>Print Function:
+```{r}
+print(concrete)
+print(toxic)
+print(yacht)
+```
+<p>Predict Function:
+```{r}
+predict(concrete)
+predict(toxic)
+predict(yacht)
+```
+<p>Anova Function:
+```{r}
+anova(concrete)
+anova(toxic)
+anova(yacht)
+```
+<p>Plot Function:
+```{r}
+plot(concrete)
+plot(toxic)
+plot(yacht)
 ```
