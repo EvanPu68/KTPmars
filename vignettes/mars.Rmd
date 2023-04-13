@@ -17,39 +17,62 @@ knitr::opts_chunk$set(
 ```{r setup, echo=FALSE}
 library(KTPmars)
 ```
-<p>Mars Function:
+
+<p>
+
+Mars Function:
+
 ```{r}
 mc <- mars.control(Mmax = 10)
-concrete <-mars(ConcreteCompressiveStrength~.,data=concrete)
-toxic <-mars(LC50~.,data=fishToxicity)
-yacht <-mars(RRPUWOD~.,data=yacht)
+concrete <-mars(ConcreteCompressiveStrength~.,data=concrete,control = mc)
+toxic <-mars(LC50~.,data=fishToxicity, control = mc)
+yacht <-mars(RRPUWOD~.,data=yacht, control = mc)
 ```
 
-<p>Summary Function:
+<p>
+
+Summary Function:
+
 ```{r}
 summary(concrete)
 summary(toxic)
 summary(yacht)
 ```
-<p>Print Function:
+
+<p>
+
+Print Function:
+
 ```{r}
 print(concrete)
 print(toxic)
 print(yacht)
 ```
-<p>Predict Function:
+
+<p>
+
+Predict Function:
+
 ```{r}
 predict(concrete)
 predict(toxic)
 predict(yacht)
 ```
-<p>Anova Function:
+
+<p>
+
+Anova Function:
+
 ```{r}
 anova(concrete)
 anova(toxic)
 anova(yacht)
 ```
-<p>Plot Function:
+
+<p>
+
+Plot Function:
+
 ```{r}
 plot(concrete)
 plot(toxic)
