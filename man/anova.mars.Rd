@@ -2,20 +2,21 @@
 % Please edit documentation in R/anova.mars.R
 \name{anova.mars}
 \alias{anova.mars}
-\title{anova implementation}
+\title{anova implementation - S3Method for an object of class 'mars'}
 \usage{
 \method{anova}{mars}(object)
 }
 \arguments{
-\item{object}{a mars object}
+\item{object}{a mars object.}
 }
 \value{
-anova information regarding the mars object
+anova information regarding the mars object and information of Basis
+functions.
 }
 \description{
-anova implementation
+anova implementation - S3Method for an object of class 'mars'
 }
 \examples{
-mm<-mars(y~.,data=marstestdata)
+mm<-mars(ConcreteCompressiveStrength~.,data=concrete,mar.)
 anova(mm)
 }
