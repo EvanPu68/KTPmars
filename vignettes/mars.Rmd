@@ -28,10 +28,13 @@ concretemars <-mars(ConcreteCompressiveStrength~.,data=concrete,control = mc)
 toxicmars <-mars(LC50~.,data=fishToxicity, control = mc)
 yachtmars <-mars(RRPUWOD~.,data=yacht, control = mc)
 ```
+<h2>Methods of MARS Object</h2>
 
-<p>
+<p>The author for MARS methods is ATP group. These methods are written to produce useful information about the fitted multivariate adaptive regression. Methods includes: summary.mars(), print.mars(), predict.mars(), anova.mars(), plot.mars(). All methods have a reference to "Friedman, J. H., & Roosen, C. B. (1995). An introduction to multivariate adaptive regression splines. Statistical methods in medical research, 4(3), 197–217. https://doi.org/10.1177/096228029500400303".
 
-Summary Function:
+<h2>summary.mars() function</h2>
+
+<p>The summary function gives an overview of the fitted model's properties. To call this function, simply pass a mars object as an argument into summary.mars(). It will then calculate and return us the residuals, coefficients of the fitted model, as well as the basis functions along with their components. For each component, the sign, split variable, and split point are shown. 3 examples are demonstrated below. summary.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.
 
 ```{r}
 summary(concretemars)
@@ -39,19 +42,17 @@ summary(toxicmars)
 summary(yachtmars)
 ```
 
-<p>
+<h2>print.mars() function</h2>
 
-Print Function:
-
+<p>The print.mars() function prints useful information about the fitted mars model. To call this function, simply pass a mars object as an argument into print.mars(). It will calculate and return the coefficients of the fitted model, as well as the basis functions along with their components. 3 examples are demonstrated below. print.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.
 ```{r}
 print(concretemars)
 print(toxicmars)
 print(yachtmars)
 ```
 
-<p>
 
-Predict Function:
+<h2>pedict.mars() function</h2>
 
 ```{r}
 predict(concretemars)
@@ -59,9 +60,10 @@ predict(toxicmars)
 predict(yachtmars)
 ```
 
-<p>
 
-Anova Function:
+<h2>anova.mars() function</h2>
+
+<p>The anova.mars() function provides useful information about the basis functions. To call this function, simply pass a mars object as an argument into anova.mars(). It will calculate and return a table consists the degree of freedom, model sum of square, mean sum of square, F-value, and P-value of each basis function, as well as the residuals. 3 examples are demonstrated below. anova.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.</p>
 
 ```{r}
 anova(concretemars)
@@ -71,8 +73,9 @@ anova(yachtmars)
 
 <p>
 
-Plot Function:
+<h2>plot.mars() function</h2>
 
+<p>The plot.mars() function produces graphics of the fitted model. To call this function, simply pass a mars object as an argument into plot.mars(). It will return us 3 plots: scatter plot of residuals vs fitted values, histogram of residuals, and Q-Q plot of residuals. 3 examples are demonstrated below. plot.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.
 ```{r, fig.width=8, fig.height=4}
 plot(concretemars)
 plot(toxicmars)
