@@ -2,7 +2,7 @@
 % Please edit documentation in R/predict.mars.R
 \name{make_B}
 \alias{make_B}
-\title{Function which uses Bfuncs and data frame to reproduce basis function matrix}
+\title{Basis function matrix builder}
 \usage{
 make_B(X, Bfuncs)
 }
@@ -16,7 +16,8 @@ make_B(X, Bfuncs)
 a basis function matrix.
 }
 \description{
-Function which uses Bfuncs and data frame to reproduce basis function matrix
+Function which uses Bfuncs information and data frame to reproduce basis
+function matrix
 }
 \examples{
     tmars <- mars(ConcreteCompressiveStrength~.,data=concrete,control =

@@ -16,4 +16,11 @@
 #'   \item{Age}{explanatory variable}
 #' }
 #'
+#' @references
+#'
+#' This dataset is a shorten version of the dataset acquired from:
+#'
+#' https://archive.ics.uci.edu/ml/datasets/Concrete+Compressive+Strength
+#'
+#' with only first 100 observations.
 "concrete"

@@ -28,4 +28,9 @@ A dataset of size N=100 with n=10 explanatory variables,
 and a response variable that depends on only the first two
 explanatory variables.
 }
+\references{
+Github repo of STAT 360 by Becky Lin, Lecture 9 Exercise Solution:
+
+https://github.com/Becky07/STAT360/blob/main/Exercises/Lect09-exercise-soln.html
+}
 \keyword{datasets}

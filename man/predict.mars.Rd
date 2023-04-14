@@ -2,7 +2,7 @@
 % Please edit documentation in R/predict.mars.R
 \name{predict.mars}
 \alias{predict.mars}
-\title{Predict implementatioN - S3Method for an object of class 'mars'}
+\title{Predict implementation - S3Method for an object of class 'mars'}
 \usage{
 \method{predict}{mars}(object, newdata)
 }
@@ -15,7 +15,13 @@
 a vector of predicted response value.
 }
 \description{
-Predict implementatioN - S3Method for an object of class 'mars'
+Base on the coefficients of the fitted model using basis functions and new
+data frame with both response and predictor values, produce prediction of new
+response based on the predictors columns in the given data frame. It transfers
+the new data frame to basis function matrix and use matrix multiplication to
+get the predicted response vector. If no new data is provided, the default is
+using the mars object's basis function, which produces the predicted response
+same as fitted values of mars object.
 }
 \examples{
 mm<-mars(ConcreteCompressiveStrength~.,data=concrete,control = mars.control(

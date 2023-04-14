@@ -18,4 +18,9 @@
 #'   \item{x9}{explanatory variable}
 #'   \item{x10}{explanatory variable}
 #' }
+#' @references
+#'
+#' Github repo of STAT 360 by Becky Lin, Lecture 9 Exercise Solution:
+#'
+#' https://github.com/Becky07/STAT360/blob/main/Exercises/Lect09-exercise-soln.html
 "marstestdata"

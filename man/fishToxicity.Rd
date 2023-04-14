@@ -23,4 +23,11 @@ fishToxicity
 A dataset of size N=100 with n=6 explanatory variables,
 and a response variable that is LC50.
 }
+\references{
+This dataset is a shorten version of the dataset acquired from:
+
+https://archive.ics.uci.edu/ml/datasets/QSAR+fish+toxicity
+
+with only first 100 observations.
+}
 \keyword{datasets}
