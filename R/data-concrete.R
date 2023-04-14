@@ -15,4 +15,5 @@
 #'   \item{FineAggregate}{explanatory variable}
 #'   \item{Age}{explanatory variable}
 #' }
+#'
 "concrete"
