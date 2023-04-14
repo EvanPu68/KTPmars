@@ -140,7 +140,7 @@ predict(yachtmars)
 
 <h4>anova.mars() function</h2>
 
-<p>The anova.mars() function provides useful information about the basis functions. To call this function, simply pass a mars object as an argument into anova.mars(). It will calculate and return a table consists the degree of freedom, model sum of square, mean sum of square, F-value, and P-value of each basis function, as well as the residuals. 3 examples are demonstrated below. anova.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.</p>
+<p>The anova.mars() function provides useful information about the basis functions. To call this function, simply pass a mars object as an argument into anova.mars(). It will calculate and return a table consists the degree of freedom, model sum of square, mean sum of square, F-value, and P-value of each basis function, as well as the residuals. Basis functions along with their components are also shown. 3 examples are demonstrated below. anova.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.</p>
 
 ```{r}
 anova(concretemars)
