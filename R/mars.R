@@ -11,7 +11,7 @@
 #' containing information of Mmax (The maximum basis function we want to add in
 #' forward selection of linear model fitting, it must be an even integer),
 #' d (The parameter used in GCV
-#' criterion in LOF, Friedman suggests d = 3, which is set to the default value of d),
+#' criterion in LOF (RSS), Friedman suggests d = 3, which is set to the default value of d),
 #' trace (A logical value that allows user to trace the reduced basis
 #' functions in backward selection in each iteration). You can set up a
 #' 'mars.control' object using the helping function mars.control(), see help
@@ -175,7 +175,7 @@ fwd_stepwise <- function(y,x,control=mars.control()){
   for(i in 1:(control$Mmax/2)) { # add 1 pair of basis functions in each
     #                              iteration
     M = (2*i)-1 # for ith pair, there are 2*i - 1 basis functions available
-    lof_best <- Inf # set an initial threshold for LOF with GCV criterion
+    lof_best <- Inf # set an initial threshold for LOF(RSS) with GCV criterion
     for(m in 1:M) {
       uni <- setdiff(1:n,Bfuncs[[m]][,2]) # avoid splitting the same basis
       #                                   function using same predictor again
@@ -190,8 +190,8 @@ fwd_stepwise <- function(y,x,control=mars.control()){
           gdat <- data.frame(y=y,Bnew)
           lof <- LOF(form = y~.-1,data = gdat,control=control) # -1 is added to
           #                                       delete extra intercept column
-          if(lof < lof_best) { #If LOF with GCV criterion of new data frame is
-            #                                              lower than threshold
+          if(lof < lof_best) { #If LOF (RSS) with GCV criterion of new data frame
+            #                                            is lower than threshold
             lof_best <- lof # update the threshold
             note <- c(m=m,v=v,t=t) # record optimal (m, v, t) to update basis
             #                        functions later
@@ -283,37 +283,37 @@ bwd_stepwise<-function(fwd,control){
   Kstar<-Jstar # Let Kstar equals to Jstar
   dat <- data.frame(y=fwd$y,fwd$B)
   lofstar<-LOF(form = y~.-1,data = dat,control=control)#-1 removes intercept
-  # column in fwd$B, and calculate the final LOF with GCV criterion in fwd
+  # column in fwd$B, and calculate the final LOF (RSS) with GCV criterion in fwd
   #
   #---------------------------------------------------
   # Looping for backward selection:
-  for(M in (Mmax+1):2){ # Allow testing LOF with GCV criterion of 11 basis
+  for(M in (Mmax+1):2){ # Allow testing LOF (RSS) with GCV criterion of 11 basis
     #                                                       functions to only 2
-    b<-Inf # Initialize a threshold for LOF with GCV criterion regardless of GCV
-    #                                                                     in fwd
+    b<-Inf # Initialize a threshold for LOF (RSS) with GCV criterion regardless
+    #                                                             of GCV in fwd
     L<-Kstar # L represents the candidate basis functions that can be eliminated
     if(control$trace) cat("L",L,"\n")
     for(m in L){ # Loop all candidate basis functions
       K <- setdiff(L,m) # delete the mth basis functions
       dat2 <- data.frame(y=fwd$y,fwd$B[,c(1,K)])# add back the first column
       lof <- LOF(form = y~.-1,data = dat2,control=control)#-1 removes intercept
-      # column in fwd$B, calculate LOF of current mth iteration
+      # column in fwd$B, calculate LOF (RSS) of current mth iteration
       if(lof<b){
-        b<-lof # Update LOF threshold b as long as eliminating mth basis
-        # function reduces previous LOF
+        b<-lof # Update LOF (RSS) threshold b as long as eliminating mth basis
+        # function reduces previous LOF (RSS)
         Kstar <- K # Update the available basis functions in next Mth loop
       }
       if(lof<lofstar){
-        lofstar<-lof # If the current LOF is lower then result in fwd, update
-        # the threshold lofstar
-        Jstar <- K # Update the basis functions that result in a lower LOF for
-        # mars object
+        lofstar<-lof # If the current LOF (RSS) is lower then result in fwd,
+        # update the threshold lofstar
+        Jstar <- K # Update the basis functions that result in a lower LOF (RSS)
+        # with GCV criterion in backward selection
       }
     }
   }
 
-  Jstar <- c(1,Jstar) # Select the basis functions that reduce LOF in fwd
-  #
+  Jstar <- c(1,Jstar) # Select the basis functions that reduce LOF (RSS) in
+  #                                                       backward selection
   #---------------------------------------------------
   # Return the results in form of a list:
   return(list(y=fwd$y,B=fwd$B[,Jstar],Bfuncs=fwd$Bfuncs[Jstar]))
@@ -357,7 +357,7 @@ init_B <- function(N,Mmax) {
   return(dd)
 }
 
-#' LOF function with GCV criterion that produces
+#' Function that calculates LOF (RSS) with GCV criterion of fitted model
 #'
 #' @param form an object of class 'formula': Specifically, a linear regression
 #' formula that has the response variable's name and indicates the predictors.
@@ -368,7 +368,7 @@ init_B <- function(N,Mmax) {
 #' see helper file mars.control() for more information.
 #'
 #'
-#' @return value of LOF with GCV criterion.
+#' @return value of LOF (RSS) with GCV criterion of fitted model
 #' @export
 #'
 #' @examples
@@ -405,7 +405,7 @@ LOF <- function(form,data,control) {
   cm = sum(diag(hatvalues(mod))) # sum of the hat-values from the fitted model
   d = control$d # parameter d in mars.control object
   tildacm = cm + (d*M)
-  out = rss * (N/((N-tildacm)^2)) # value of LOF with GCV criterion
+  out = rss * (N/((N-tildacm)^2)) # value of LOF (RSS) with GCV criterion
   return(out)
 }
 
@@ -563,16 +563,13 @@ new_mars.control <- function(control) {
 #' https://github.com/Becky07/STAT360
 #'
 validate_mars.control <- function(control) {
-  #
-  #---------------------------------------------------
-  # Stop the function if one of the types of inputs for mars.control object is
-  # wrong:
+
+  # Stop the function either of the inputs are not valid
   stopifnot(is.integer(control$Mmax),is.numeric(control$d),
             is.logical(control$trace))
-  #
-  #---------------------------------------------------
-  # Coerce Mmax if it has right type, but wrong value
-  # (<2 or not an even integer):
+
+  # Coerce Mmax if it has right type, but wrong value (<2 or not an
+  # even integer):
   if(control$Mmax < 2) {
     warning("Mmax must be >= 2; Reset it to 2")
     control$Mmax <- 2}
@@ -592,8 +589,8 @@ validate_mars.control <- function(control) {
 #' @param d The parameter used in calculation of Generalized cross-validation.
 #' Friedman suggests that d = 3 works well, thus default value is 3.
 #' @param trace A True or False value that allows user to see the candidate subset
-#' basis functions that might reduce LOF with GCV criterion in backward selection
-#' procedure similar to linear regression modeling.
+#' basis functions that might reduce LOF (RSS) with GCV criterion in backward
+#' selection procedure.
 #'
 #' @return an object of class 'mars.control', that is a list of parameters
 #' @export
@@ -622,9 +619,9 @@ validate_mars.control <- function(control) {
 #'
 mars.control <- function(Mmax = 2,d = 3,trace = FALSE) {
   Mmax <- as.integer(Mmax) # coerce Mmax to an integer
-  control <- list(Mmax=Mmax,d=d,trace=trace)
-  control <- validate_mars.control(control)
-  new_mars.control(control)
+  control <- list(Mmax=Mmax,d=d,trace=trace) # set up a list of inputs
+  control <- validate_mars.control(control) # Must pass validation
+  new_mars.control(control) # use guaranteed correct inputs for constructor
 }
 
 

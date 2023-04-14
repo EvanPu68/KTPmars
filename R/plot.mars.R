@@ -33,8 +33,8 @@
 #' https://github.com/Becky07/STAT360
 #'
 plot.mars <- function(object) {
-  fitted <- fitted(object)
-  resid <- residuals(object)
+  fitted <- fitted(object) # obtain fitted value of response
+  resid <- residuals(object) # obtain the value of residuals
   par(mfrow=c(1,3))
   plot(fitted, resid, col = "blue", pch = 20, main = "Residuals vs. Fitted Values", xlab="Fitted Values",
        ylab="Residuals")

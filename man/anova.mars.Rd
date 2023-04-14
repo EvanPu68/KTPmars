@@ -10,8 +10,8 @@
 \item{object}{a mars object.}
 }
 \value{
-anova information regarding the mars object and information of Basis
-functions.
+anova() information regarding the mars object, similar to anova output
+of an object of class 'lm', and information of Basis functions.
 }
 \description{
 Anova implementation - S3Method for an object of class 'mars'

@@ -37,15 +37,15 @@ predict.mars <- function(object,newdata) {
     B <- as.matrix(object$B) # coerce B to matrix for matrix multiplication
   }
   else {
-    tt <- terms(object$formula,data=newdata) #complete
+    tt <- terms(object$formula,data=newdata)
     tt <- delete.response(tt)
-    mf <- model.frame(tt,newdata)
-    mt <- attr(mf, "terms")
-    X <- model.matrix(mt, mf)[,-1] # remove intercept
+    mf <- model.frame(tt,newdata) # create model matrix data frame
+    mt <- attr(mf, "terms") # a linear regression formula without response
+    X <- model.matrix(mt, mf)[,-1] # create model matrix
     B <- make_B(X,object$Bfuncs)
   }
   beta <- object$coefficients
-  drop(B %*% beta)
+  drop(B %*% beta) # matrix multiplication
 }
 
 #' Function which uses Bfuncs and data frame to reproduce basis function matrix
@@ -88,16 +88,20 @@ predict.mars <- function(object,newdata) {
 #' https://github.com/Becky07/STAT360
 #'
 make_B<-function(X,Bfuncs){
+  #Set up the output data frame with known number of row and column
   output <- data.frame(matrix(NA,nrow = nrow(X), ncol = length(Bfuncs)))
-  output[[1]] <- rep(1,nrow(X))
-  for(i in 2:(length(Bfuncs))){
-    output[[i]]<-h(s=Bfuncs[[i]][1,1],x=X[,Bfuncs[[i]][1,2]],t=Bfuncs[[i]][1,3])
-    if( nrow(Bfuncs[[i]]) > 1){
-      for(k in 2:nrow(Bfuncs[[i]]))
-        output[[i]]<-output[[i]]*h(s=Bfuncs[[i]][k,1],x=X[,Bfuncs[[i]][k,2]],
-                                   t=Bfuncs[[i]][k,3])
+  output[[1]] <- rep(1,nrow(X))# set the first column to 1, the intercept
+  for(i in 2:(length(Bfuncs))){ #loop over all element of Bfuncs except the first
+    sumpdt = 1 # set up an initial value of 1 for sum products of hinge function
+    for(k in 1:nrow(Bfuncs[[i]])){ #loop over all rows in ith element of Bfuncs
+      # calculate the sum product of hinge functions
+      sumpdt = sumpdt * h(s=Bfuncs[[i]][k,1],x=X[,Bfuncs[[i]][k,2]],
+                          t=Bfuncs[[i]][k,3])
     }
+    output[[i]]<-sumpdt # assign the sum product to the ith element of output
+    #                                                              data frame
   }
-  output<-as.matrix(output)
+  output<-as.matrix(output)# coerce output to a matrix
   return(output)
 }
+

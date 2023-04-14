@@ -14,8 +14,8 @@ Default value is 2.}
 Friedman suggests that d = 3 works well, thus default value is 3.}
 
 \item{trace}{A True or False value that allows user to see the candidate subset
-basis functions that might reduce LOF with GCV criterion in backward selection
-procedure similar to linear regression modeling.}
+basis functions that might reduce LOF (RSS) with GCV criterion in backward
+selection procedure.}
 }
 \value{
 an object of class 'mars.control', that is a list of parameters

@@ -2,8 +2,8 @@
 #'
 #' @param object a mars object.
 #'
-#' @return anova information regarding the mars object and information of Basis
-#' functions.
+#' @return anova() information regarding the mars object, similar to anova output
+#' of an object of class 'lm', and information of Basis functions.
 #' @export
 #'
 #' @examples
@@ -33,8 +33,9 @@
 #'
 anova.mars <- function(object) {
   fit <- lm(y~.-1,data=data.frame(y=object$y,object$B))
-  print(anova(fit))
-  for (i in 1:length(names(object$B))){
+  print(anova(fit)) # print anova output for an object of class 'lm'
+  for (i in 1:length(names(object$B))){# loop over Basis functions and print
+    # hinge function information for each of them
     cat(names(object$B)[[i]], ":","\n")
     if(i == 1){
       cat("Intercept", "\n")

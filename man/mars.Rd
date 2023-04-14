@@ -18,7 +18,7 @@ predictor variables.}
 containing information of Mmax (The maximum basis function we want to add in
 forward selection of linear model fitting, it must be an even integer),
 d (The parameter used in GCV
-criterion in LOF, Friedman suggests d = 3, which is set to the default value of d),
+criterion in LOF (RSS), Friedman suggests d = 3, which is set to the default value of d),
 trace (A logical value that allows user to trace the reduced basis
 functions in backward selection in each iteration). You can set up a
 'mars.control' object using the helping function mars.control(), see help

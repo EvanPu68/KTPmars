@@ -10,8 +10,8 @@
 \item{object}{an object of class 'mars'.}
 }
 \value{
-prints summary() information similar to an object of class 'lm', with
-information of basis functions
+summary() information similar to an object of class 'lm', with
+information of basis functions.
 }
 \description{
 Summary implementatioN - S3Method for an object of class 'mars'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mars.R
 \name{LOF}
 \alias{LOF}
-\title{LOF function with GCV criterion that produces}
+\title{Function that calculates LOF (RSS) with GCV criterion of fitted model}
 \usage{
 LOF(form, data, control)
 }
@@ -18,10 +18,10 @@ avoid an extra intercept column.}
 see helper file mars.control() for more information.}
 }
 \value{
-value of LOF with GCV criterion.
+value of LOF (RSS) with GCV criterion of fitted model
 }
 \description{
-LOF function with GCV criterion that produces
+Function that calculates LOF (RSS) with GCV criterion of fitted model
 }
 \examples{
 tlof <- LOF(form = ConcreteCompressiveStrength~.-1,data = concrete,

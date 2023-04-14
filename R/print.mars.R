@@ -2,8 +2,8 @@
 #'
 #' @param object an object of class 'mars'.
 #'
-#' @return prints matched function call, coefficients and information of basis
-#' functions
+#' @return prints matched function call and coefficients, similar to the print()
+#' output of an object of class 'lm', and information of basis functions.
 #' @export
 #'
 #' @examples
@@ -33,10 +33,11 @@
 #'
 
 print.mars<-function(object){
-  print(object$call)
+  print(object$call) # print the matched call
   cat("Coefficients:","\n")
-  print(object$coefficients)
-  for (i in 1:length(names(object$B))){
+  print(object$coefficients) # print the coefficients
+  for (i in 1:length(names(object$B))){ # loop over Basis functions and print
+    # hinge function information for each of them
     cat(names(object$B)[[i]], ":","\n")
     if(i == 1){
       cat("Intercept", "\n")

@@ -10,8 +10,8 @@
 \item{object}{an object of class 'mars'.}
 }
 \value{
-prints matched function call, coefficients and information of basis
-functions
+prints matched function call and coefficients, similar to the print()
+output of an object of class 'lm', and information of basis functions.
 }
 \description{
 Print implementatioN - S3Method for an object of class 'mars'

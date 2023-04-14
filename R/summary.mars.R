@@ -2,8 +2,8 @@
 #'
 #' @param object an object of class 'mars'.
 #'
-#' @return prints summary() information similar to an object of class 'lm', with
-#' information of basis functions
+#' @return summary() information similar to an object of class 'lm', with
+#' information of basis functions.
 #'
 #' @export
 #'
@@ -33,8 +33,9 @@
 #' https://github.com/Becky07/STAT360
 #'
 summary.mars<-function(object){
-  print(summary.lm(object))
-  for (i in 1:length(names(object$B))){
+  print(summary.lm(object)) # prints summary output of a 'lm' object
+  for (i in 1:length(names(object$B))){# loop over Basis functions and print
+    # hinge function information for each of them
     cat(names(object$B)[[i]], ":","\n")
     if(i == 1){
       cat("Intercept", "\n")
