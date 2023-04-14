@@ -29,7 +29,11 @@ null, 1 or multiples rows. Each row represents information of each hinge functio
 }
 }
 \description{
-Forward stepwise function based on Algorithm 2 by Friedman
+Using a given maximum number of basis functions we wish to have except the
+intercept, builds basis function matrix B by adding pair of new basis function.
+Function will loop over all predictor variables and available split points and
+determine the right pair basis functions that produce the least LOF (RSS) standard
+with GCV criterion in each iteration.
 }
 \examples{
 fwdtest <- fwd_stepwise(y=concrete$ConcreteCompressiveStrength,x=concrete[,-1],

@@ -21,7 +21,10 @@ see helper file mars.control() for more information.}
 value of LOF (RSS) with GCV criterion of fitted model
 }
 \description{
-Function that calculates LOF (RSS) with GCV criterion of fitted model
+Calculate the LOF with GCV criterion, which is: RSS * N / (N-Ctilda(M))^2,
+where RSS is the residual sum of squares of the fitted model, N is number of
+observation, Ctilda(M) is sum of sum of the hat-values and product of d and
+number of coefficients except the intercept.
 }
 \examples{
 tlof <- LOF(form = ConcreteCompressiveStrength~.-1,data = concrete,

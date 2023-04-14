@@ -2,8 +2,7 @@
 % Please edit documentation in R/mars.R
 \name{split_points}
 \alias{split_points}
-\title{A function that picks unique, available split point value in a vector of
-predictor value.}
+\title{Picking split points}
 \usage{
 split_points(xvar, Bm)
 }

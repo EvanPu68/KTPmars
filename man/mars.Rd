@@ -59,6 +59,10 @@ null, 1 or multiples rows. Each row represents information of each hinge functio
 }
 \description{
 Fit Friedman's Multivariate Adaptive Regression Splines (MARS) model.
+
+MARS (Multivariate Adaptive Regression Splines) is used to produce models
+with multiple input variables. These models are piece wise defined polynomial
+functions and therefore can be non-linear.
 }
 \examples{
 mm <- mars(ConcreteCompressiveStrength~.,data=concrete)

@@ -16,7 +16,7 @@ functions will be added in forward stepwise function.}
 a data frame with first column of 1s and rest column as NA.
 }
 \description{
-Initialization function for basis function matrix in forward selection
+Builds a container data frame for the basis functions.
 }
 \examples{
 Bmatrix <- init_B(100,10)

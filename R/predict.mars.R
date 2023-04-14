@@ -1,4 +1,13 @@
-#' Predict implementatioN - S3Method for an object of class 'mars'
+#' Predict implementation - S3Method for an object of class 'mars'
+#'
+#' @description
+#' Base on the coefficients of the fitted model using basis functions and new
+#' data frame with both response and predictor values, produce prediction of new
+#' response based on the predictors columns in the given data frame. It transfers
+#' the new data frame to basis function matrix and use matrix multiplication to
+#' get the predicted response vector. If no new data is provided, the default is
+#' using the mars object's basis function, which produces the predicted response
+#' same as fitted values of mars object.
 #'
 #' @param object an object of class 'mars'.
 #' @param newdata a data frame with response and predictor variables.
@@ -48,7 +57,11 @@ predict.mars <- function(object,newdata) {
   drop(B %*% beta) # matrix multiplication
 }
 
-#' Function which uses Bfuncs and data frame to reproduce basis function matrix
+#' Basis function matrix builder
+#'
+#' @description
+#' Function which uses Bfuncs information and data frame to reproduce basis
+#' function matrix
 #'
 #' @param X a model matrix (predictors only).
 #' @param Bfuncs a list of Bfuncs information, usually extracts from output of
@@ -104,4 +117,5 @@ make_B<-function(X,Bfuncs){
   output<-as.matrix(output)# coerce output to a matrix
   return(output)
 }
+
 

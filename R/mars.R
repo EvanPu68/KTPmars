@@ -1,6 +1,11 @@
 #' Multivariate Adaptive Regression Splines (MARS)
 #'
+#' @description
 #' Fit Friedman's Multivariate Adaptive Regression Splines (MARS) model.
+#'
+#' MARS (Multivariate Adaptive Regression Splines) is used to produce models
+#' with multiple input variables. These models are piece wise defined polynomial
+#' functions and therefore can be non-linear.
 #'
 #' @param formula an object of class 'formula': Specifically, a linear regression
 #' formula that has the response variable's name and indicates the predictors.
@@ -112,6 +117,13 @@ mars <- function(formula,data,control = mars.control()) {
 
 
 #' Forward stepwise function based on Algorithm 2 by Friedman
+#'
+#' @description
+#' Using a given maximum number of basis functions we wish to have except the
+#' intercept, builds basis function matrix B by adding pair of new basis function.
+#' Function will loop over all predictor variables and available split points and
+#' determine the right pair basis functions that produce the least LOF (RSS) standard
+#' with GCV criterion in each iteration.
 #'
 #' @param y the vector of response variable used.
 #' @param x the model matrix used.
@@ -226,6 +238,10 @@ fwd_stepwise <- function(y,x,control=mars.control()){
 
 #' Backward stepwise function based on Algorithm 3 by Freifdman
 #'
+#' @description
+#' Base on the output of forward selection, perform backward selection using
+#' basis functions to reduce over-fitting.
+#'
 #' @param fwd output of forward stepwise function, it is a list of vector of
 #' response, Basis function matrix and Bfuncs which recorded the information of
 #' basis functions.
@@ -321,6 +337,9 @@ bwd_stepwise<-function(fwd,control){
 
 #' Initialization function for basis function matrix in forward selection
 #'
+#' @description
+#' Builds a container data frame for the basis functions.
+#'
 #' @param N number of observations.
 #' @param Mmax Mmax from an object of class 'mars.control', the maximum basis
 #' functions will be added in forward stepwise function.
@@ -358,6 +377,12 @@ init_B <- function(N,Mmax) {
 }
 
 #' Function that calculates LOF (RSS) with GCV criterion of fitted model
+#'
+#' @description
+#' Calculate the LOF with GCV criterion, which is: RSS * N / (N-Ctilda(M))^2,
+#' where RSS is the residual sum of squares of the fitted model, N is number of
+#' observation, Ctilda(M) is sum of sum of the hat-values and product of d and
+#' number of coefficients except the intercept.
 #'
 #' @param form an object of class 'formula': Specifically, a linear regression
 #' formula that has the response variable's name and indicates the predictors.
@@ -446,6 +471,9 @@ h <- function(x,s,t) { # hinge function
   return(pmax(0,s*(x-t)))
 }
 
+#' Picking split points
+#'
+#' @description
 #' A function that picks unique, available split point value in a vector of
 #' predictor value.
 #'
@@ -498,6 +526,9 @@ split_points <- function(xvar,Bm) {
 
 #' Constructor for 'mars.control' objects
 #'
+#' This function construct a 'mars.control' object that specifies
+#' parameters used in the model fitting procedure for users familiar to mars.
+#'
 #' @param control a list of values Mmax, d and trace.
 #'
 #' @return an object of class 'mars.control'.
@@ -531,6 +562,9 @@ new_mars.control <- function(control) {
 }
 
 #' Validator for 'mars.control' objects
+#'
+#' This function validates a list object if it is able to become an object of
+#' class 'mars.control'.
 #'
 #' @param control a list of values Mmax, d and trace.
 #'

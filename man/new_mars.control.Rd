@@ -13,7 +13,8 @@ new_mars.control(control)
 an object of class 'mars.control'.
 }
 \description{
-Constructor for 'mars.control' objects
+This function construct a 'mars.control' object that specifies
+parameters used in the model fitting procedure for users familiar to mars.
 }
 \examples{
 testnewmc <- new_mars.control(list(Mmax=10,d=3,trace=TRUE))

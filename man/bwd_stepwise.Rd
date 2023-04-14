@@ -29,7 +29,8 @@ null, 1 or multiples rows. Each row represents information of each hinge functio
 }
 }
 \description{
-Backward stepwise function based on Algorithm 3 by Freifdman
+Base on the output of forward selection, perform backward selection using
+basis functions to reduce over-fitting.
 }
 \examples{
 fwdtest <- fwd_stepwise(y=concrete$ConcreteCompressiveStrength,x=concrete[,-1],
