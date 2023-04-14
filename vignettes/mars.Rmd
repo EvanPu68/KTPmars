@@ -73,7 +73,8 @@ An object of class "mars" is a list containing at least the following informatio
 
 
 <h3> Authors </h2>
-Project by: Yifan Pu, Andy Tong, Anthony Kim
+Project by: Yifan Pu, Andy Tong, Anthony Kim  
+The author for MARS methods is ATP group. These methods are written to produce useful information about the fitted multivariate adaptive regression.
 
 <h3> References </h2>
 
@@ -103,12 +104,10 @@ concretemars <-mars(ConcreteCompressiveStrength~.,data=concrete,control = mc)
 toxicmars <-mars(LC50~.,data=fishToxicity, control = mc)
 yachtmars <-mars(RRPUWOD~.,data=yacht, control = mc)
 ```
+
 <h2>Methods of MARS Object</h2>
 
-<p>The author for MARS methods is ATP group. These methods are written to produce useful information about the fitted multivariate adaptive regression. Methods includes: summary.mars(), print.mars(), predict.mars(), anova.mars(), plot.mars(). All methods have a reference to "Friedman, J. H., & Roosen, C. B. (1995). An introduction to multivariate adaptive regression splines. Statistical methods in medical research, 4(3), 197–217. https://doi.org/10.1177/096228029500400303".
 
-
-<h3> See Also
 <h4>summary.mars() function</h2>
 
 <p>The summary function gives an overview of the fitted model's properties. To call this function, simply pass a mars object as an argument into summary.mars(). It will then calculate and return us the residuals, coefficients of the fitted model, as well as the basis functions along with their components. For each component, the sign, split variable, and split point are shown. 3 examples are demonstrated below. summary.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.
