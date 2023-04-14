@@ -20,9 +20,84 @@ library(KTPmars)
 
 <p>
 
-Mars Function:
+<h2>Fitting Multivariate Adaptive Regression Splines:
 
-```{r}
+<h3> Description </h2>
+<p> MARS (Multivariate Adaptive Regression Splines) is used to produce models with multiple input variables. These models are piece wise defined polynomial functions and therefore can be non-linear.
+
+<h3> Usage
+```{r eval=FALSE}
+mars(formula ,data ,control = mars.control(Mmax=2, d=3, trace=FALSE))
+
+##S3 method for class 'mars'
+print(mars_object)
+```
+<h3> Arguments </h2>
+
+|               |                                                   | 
+| :-------------|:--------------------------------------------------| 
+| formula     | an object of class 'formula': Specifically, a linear regression formula that has the response variable's name and indicates the predictors. It is similar to the formula used in lm(). | 
+| data        | a data frame containing the variables, including response and predictor variables. |  
+| control | an object of class 'mars.control': It is a list containing information of Mmax, d, trace. You can set up a 'mars.control' object using the helping function mars.control(), see help  file of mars.control() for further information. |  
+
+<h3> Details
+
+<h3> Value </h2>
+mars returns an object of class "mars" which is similar to an object of class 'lm', with extra information on basis functions.
+
+An object of class "mars" is a list containing at least the following information:
+
+|               |                                                   | 
+| :-------------|:--------------------------------------------------| 
+| call |formula used in function call of mars(). |
+| y | the column vector of response variable. |
+| B | a matrix that contains information of basis functions determined by forward and backward selection, which is the data used in fitting the linear regression model in mars(). Each column of basis functions are products of hinge functions with information of sign, number of predictor and split point given in Bfuncs in order.|
+| Bfuncs | a list containing information on how each basis function is created, each element of Bfuncs correspond to the hinge functions that are used to create each column of B. Inside each element of Bfuncs, there could be null, 1 or multiples rows. Each row represents information of each hinge function. |
+|x_names | a character vector of predictors' names |
+|coefficients|a vector of the coefficients|
+|residuals|a vector of difference between observed response and fitted response |
+|effects|a numeric vector of orthogonal effects from the fitted model|
+|rank |the numeric rank of the fitted linear model|
+|fitted.values|the fitted mean values|
+|assign|a vector from 1 to the value of rank.|
+|qr|a list of qr decomposition information|
+|df.residual|the residual degree of freedom|
+|xlevels|a record of the levels of the factors used in fitting|
+|call|the match lm function call using basis functions|
+|terms|the 'term' object that is extracted from basis functions and formula|
+|model|the model frame used|
+
+
+
+
+
+
+<h3> Authors </h2>
+Project by: Yifan Pu, Andy Tong, Anthony Kim
+
+<h3> References </h2>
+
+Friedman, J. H. (1991). Multivariate Adaptive Regression Splines . *The Annals of Statistics, 19*(1), 1–67. Retrieved April 14, 2023, from https://www.jstor.org/stable/2241837. 
+
+Lin Becky, (2023) STAT360
+https://github.com/Becky07/STAT360
+
+
+<h3> See Also </h2>
+summary.mars for more detailed summaries and anova.mars for the ANOVA table.
+
+The generic functions coef, effects, residuals, fitted, vcov.
+
+predict.mars (via predict) for prediction, including confidence and prediction intervals; confint for confidence intervals of parameters.
+(Confint as well as functions related to the prediction intervals were inherited from class lm)
+
+print.mars and plot.mars have also been constructed to be more appropriate when applied to an object of class "mars"
+
+<h3> Examples
+
+
+
+```{r echo=FALSE}
 mc <- mars.control(Mmax = 10)
 concretemars <-mars(ConcreteCompressiveStrength~.,data=concrete,control = mc)
 toxicmars <-mars(LC50~.,data=fishToxicity, control = mc)
@@ -32,7 +107,9 @@ yachtmars <-mars(RRPUWOD~.,data=yacht, control = mc)
 
 <p>The author for MARS methods is ATP group. These methods are written to produce useful information about the fitted multivariate adaptive regression. Methods includes: summary.mars(), print.mars(), predict.mars(), anova.mars(), plot.mars(). All methods have a reference to "Friedman, J. H., & Roosen, C. B. (1995). An introduction to multivariate adaptive regression splines. Statistical methods in medical research, 4(3), 197–217. https://doi.org/10.1177/096228029500400303".
 
-<h2>summary.mars() function</h2>
+
+<h3> See Also
+<h4>summary.mars() function</h2>
 
 <p>The summary function gives an overview of the fitted model's properties. To call this function, simply pass a mars object as an argument into summary.mars(). It will then calculate and return us the residuals, coefficients of the fitted model, as well as the basis functions along with their components. For each component, the sign, split variable, and split point are shown. 3 examples are demonstrated below. summary.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.
 
@@ -42,7 +119,7 @@ summary(toxicmars)
 summary(yachtmars)
 ```
 
-<h2>print.mars() function</h2>
+<h4>print.mars() function</h2>
 
 <p>The print.mars() function prints useful information about the fitted mars model. To call this function, simply pass a mars object as an argument into print.mars(). It will calculate and return the coefficients of the fitted model, as well as the basis functions along with their components. 3 examples are demonstrated below. print.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.
 ```{r}
@@ -52,7 +129,7 @@ print(yachtmars)
 ```
 
 
-<h2>pedict.mars() function</h2>
+<h4>predict.mars() function</h2>
 
 ```{r}
 predict(concretemars)
@@ -61,7 +138,7 @@ predict(yachtmars)
 ```
 
 
-<h2>anova.mars() function</h2>
+<h4>anova.mars() function</h2>
 
 <p>The anova.mars() function provides useful information about the basis functions. To call this function, simply pass a mars object as an argument into anova.mars(). It will calculate and return a table consists the degree of freedom, model sum of square, mean sum of square, F-value, and P-value of each basis function, as well as the residuals. 3 examples are demonstrated below. anova.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.</p>
 
@@ -73,7 +150,7 @@ anova(yachtmars)
 
 <p>
 
-<h2>plot.mars() function</h2>
+<h4>plot.mars() function</h2>
 
 <p>The plot.mars() function produces graphics of the fitted model. To call this function, simply pass a mars object as an argument into plot.mars(). It will return us 3 plots: scatter plot of residuals vs fitted values, histogram of residuals, and Q-Q plot of residuals. 3 examples are demonstrated below. plot.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.
 ```{r, fig.width=8, fig.height=4}
