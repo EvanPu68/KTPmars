@@ -1,5 +1,8 @@
 #' Plot implementatioN - S3Method for an object of class 'mars'
 #'
+#' @description
+#' To produce graphics of the fitted model.
+#'
 #' @param object an object of class 'mars'
 #'
 #' @return produce 3 plots for the fitted model using basis functions:

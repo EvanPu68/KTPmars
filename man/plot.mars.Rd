@@ -15,7 +15,7 @@ Residuals vs. Fitted values plot, histogram of residuals and normal Q-Q plot
 of residuals
 }
 \description{
-Plot implementatioN - S3Method for an object of class 'mars'
+To produce graphics of the fitted model.
 }
 \examples{
 mm<-mars(ConcreteCompressiveStrength~.,data=concrete,control = mars.control(

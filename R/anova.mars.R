@@ -1,5 +1,8 @@
 #' Anova implementation - S3Method for an object of class 'mars'
 #'
+#' @description
+#' To provide useful information about the basis functions.
+#'
 #' @param object a mars object.
 #'
 #' @return anova() information regarding the mars object, similar to anova output

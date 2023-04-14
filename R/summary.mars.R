@@ -1,5 +1,8 @@
 #' Summary implementatioN - S3Method for an object of class 'mars'
 #'
+#' @description
+#' To give an overview of the fitted model's properties.
+#'
 #' @param object an object of class 'mars'.
 #'
 #' @return summary() information similar to an object of class 'lm', with

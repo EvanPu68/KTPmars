@@ -14,7 +14,7 @@ summary() information similar to an object of class 'lm', with
 information of basis functions.
 }
 \description{
-Summary implementatioN - S3Method for an object of class 'mars'
+To give an overview of the fitted model's properties.
 }
 \examples{
 mm<-mars(ConcreteCompressiveStrength~.,data=concrete,control = mars.control(
