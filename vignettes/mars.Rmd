@@ -20,6 +20,17 @@ library(KTPmars)
 
 <p>
 
+<p> Github Repo Link: https://github.com/EvanPu68/KTPmars
+
+<h2>Notes:</h2>
+
+<p> 
+1. Load the package by load_all() will automatically run all test suites examples in test.R, which is inside file /R. If you want to go through the examples in detail, we recommend open the test.R and rerun all the codes for illustration of mars() and methods() for different data sets.
+
+<p>
+2. All data used in test suites are within package KTPmars, that is, you can access the data set: concrete, fishToxicity, and yacht after loading the package without extra actions. You can access the details of data sets by checking the their help files.
+
+
 <h2>Fitting Multivariate Adaptive Regression Splines:
 
 <h3> Description </h2>
@@ -77,7 +88,8 @@ An object of class "mars" is a list containing at least the following informatio
 
 |               |                                                   | 
 | :-------------|:--------------------------------------------------| 
-| call |formula used in function call of mars(). |
+| call | the matched function call of mars() |
+| formula | formula used in function call of mars(). |
 | y | the column vector of response variable. |
 | B | a matrix that contains information of basis functions determined by forward and backward selection, which is the data used in fitting the linear regression model in mars(). Each column of basis functions are products of hinge functions with information of sign, number of predictor and split point given in Bfuncs in order.|
 | Bfuncs | a list containing information on how each basis function is created, each element of Bfuncs correspond to the hinge functions that are used to create each column of B. Inside each element of Bfuncs, there could be null, 1 or multiples rows. Each row represents information of each hinge function. |
@@ -155,7 +167,7 @@ print(yachtmars)
 
 <h4>predict.mars() function</h2>
 
-<p>The predict.mars() function depends on the coefficients of the fitted model and new data frame with both response and predictor values to produce prediction of new response based on the predictors columns in the given data frame. It transfers the new data frame to basis function matrix and use matrix multiplication to get the predicted response vector. If no new data is provided, the default is using the mars object's basis function, which produces the predicted response same as fitted values of mars object. To call the function, pass a mars object as an argument into predict.mars(). Or, call predict() directly (as below), method dispatch will find the correct method for object of class 'mars'. It will product a vector of predicted values with same observations as data frame provided. 3 examples are demonstrated below. predict.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.
+<p>The predict.mars() function depends on the coefficients of the fitted model and new data frame with both response and predictor values to produce prediction of new response based on the predictors columns in the given data frame. It transfers the new data frame to basis function matrix and use matrix multiplication to get the predicted response vector. If no new data is provided, the default is using the mars object's basis function, which produces the predicted response same as fitted values of mars object. To call the function, pass a mars object as an argument into predict.mars(). Or, call predict() directly (as below), method dispatch will find the correct method for object of class 'mars'. It will produce a vector of predicted values with same observations as data frame provided. 3 examples are demonstrated below. predict.mars() is called on the 3 mars objects constructed from the 3 datasets: concrete, toxic, and yacht.
 ```{r}
 predict(concretemars)
 predict(toxicmars)
