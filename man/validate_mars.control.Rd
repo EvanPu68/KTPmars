@@ -7,7 +7,8 @@
 validate_mars.control(control)
 }
 \arguments{
-\item{control}{a list of values Mmax, d and trace.}
+\item{control}{a list of values Mmax, d and trace, see ?mars.control for more
+information.}
 }
 \value{
 the original list if Mmax, d and trace are valid for the list to be

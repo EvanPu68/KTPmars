@@ -529,13 +529,14 @@ split_points <- function(xvar,Bm) {
 #' This function construct a 'mars.control' object that specifies
 #' parameters used in the model fitting procedure for users familiar to mars.
 #'
-#' @param control a list of values Mmax, d and trace.
+#' @param control a list of values Mmax, d and trace, see ?mars.control for more
+#' information.
 #'
 #' @return an object of class 'mars.control'.
 #' @export
 #'
 #' @examples
-#' testnewmc <- new_mars.control(list(Mmax=10,d=3,trace=TRUE))
+#' testnewmc <- new_mars.control(list(Mmax=as.integer(10),d=3,trace=TRUE))
 #'
 #' @references
 #'
@@ -566,7 +567,8 @@ new_mars.control <- function(control) {
 #' This function validates a list object if it is able to become an object of
 #' class 'mars.control'.
 #'
-#' @param control a list of values Mmax, d and trace.
+#' @param control a list of values Mmax, d and trace, see ?mars.control for more
+#' information.
 #'
 #' @return the original list if Mmax, d and trace are valid for the list to be
 #' assigned to an object of class 'mars.control'. Otherwise,

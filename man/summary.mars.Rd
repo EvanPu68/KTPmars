@@ -14,7 +14,9 @@ summary() information similar to an object of class 'lm', with
 information of basis functions.
 }
 \description{
-To give an overview of the fitted model's properties.
+To give an overview of the fitted model's properties, for an object of class
+'mars', calling generic summary() with a mars object will dispatch the correct
+method for class 'mars'.
 }
 \examples{
 mm<-mars(ConcreteCompressiveStrength~.,data=concrete,control = mars.control(

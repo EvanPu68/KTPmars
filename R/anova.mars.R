@@ -1,11 +1,13 @@
 #' Anova implementation - S3Method for an object of class 'mars'
 #'
 #' @description
-#' To provide useful information about the basis functions.
+#' To provide useful information about the basis functions for an object of class
+#' 'mar', calling generic anova() with a mars object will dispatch the correct
+#' method for class 'mars'.
 #'
-#' @param object a mars object.
+#' @param object an object of class 'mar'.
 #'
-#' @return anova() information regarding the mars object, similar to anova output
+#' @return anova information regarding the mars object, similar to anova output
 #' of an object of class 'lm', and information of Basis functions.
 #' @export
 #'

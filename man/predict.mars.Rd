@@ -21,7 +21,8 @@ response based on the predictors columns in the given data frame. It transfers
 the new data frame to basis function matrix and use matrix multiplication to
 get the predicted response vector. If no new data is provided, the default is
 using the mars object's basis function, which produces the predicted response
-same as fitted values of mars object.
+same as fitted values of mars object. Calling generic predict() with
+a mars object will dispatch the correct method for class 'mars'.
 }
 \examples{
 mm<-mars(ConcreteCompressiveStrength~.,data=concrete,control = mars.control(

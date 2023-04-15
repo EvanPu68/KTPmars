@@ -1,7 +1,9 @@
 #' Summary implementatioN - S3Method for an object of class 'mars'
 #'
 #' @description
-#' To give an overview of the fitted model's properties.
+#' To give an overview of the fitted model's properties, for an object of class
+#' 'mars', calling generic summary() with a mars object will dispatch the correct
+#' method for class 'mars'.
 #'
 #' @param object an object of class 'mars'.
 #'

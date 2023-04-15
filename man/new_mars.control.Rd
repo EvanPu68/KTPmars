@@ -7,7 +7,8 @@
 new_mars.control(control)
 }
 \arguments{
-\item{control}{a list of values Mmax, d and trace.}
+\item{control}{a list of values Mmax, d and trace, see ?mars.control for more
+information.}
 }
 \value{
 an object of class 'mars.control'.
@@ -17,7 +18,7 @@ This function construct a 'mars.control' object that specifies
 parameters used in the model fitting procedure for users familiar to mars.
 }
 \examples{
-testnewmc <- new_mars.control(list(Mmax=10,d=3,trace=TRUE))
+testnewmc <- new_mars.control(list(Mmax=as.integer(10),d=3,trace=TRUE))
 
 }
 \references{

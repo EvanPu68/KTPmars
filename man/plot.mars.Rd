@@ -10,12 +10,13 @@
 \item{object}{an object of class 'mars'}
 }
 \value{
-produce 3 plots for the fitted model using basis functions:
+3 plots for the fitted model using basis functions:
 Residuals vs. Fitted values plot, histogram of residuals and normal Q-Q plot
-of residuals
+of residuals.
 }
 \description{
-To produce graphics of the fitted model.
+To produce graphics for an object of class 'mars', calling generic plot() with
+a mars object will dispatch the correct method for class 'mars'.
 }
 \examples{
 mm<-mars(ConcreteCompressiveStrength~.,data=concrete,control = mars.control(

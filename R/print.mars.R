@@ -1,12 +1,14 @@
 #' Print implementatioN - S3Method for an object of class 'mars'
 #'
 #' @description
-#' To print useful information about the fitted mars model.
+#' To print useful information about an object of class 'mars', calling generic
+#' print() with a mars object will dispatch the correct method for class 'mars'.
 #'
 #' @param object an object of class 'mars'.
 #'
-#' @return prints matched function call and coefficients, similar to the print()
-#' output of an object of class 'lm', and information of basis functions.
+#' @return prints matched function call and coefficients for 'mars' object,
+#' similar to the print() output of an object of class 'lm',
+#' with extra information of basis functions.
 #' @export
 #'
 #' @examples

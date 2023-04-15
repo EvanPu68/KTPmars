@@ -1,13 +1,14 @@
 #' Plot implementatioN - S3Method for an object of class 'mars'
 #'
 #' @description
-#' To produce graphics of the fitted model.
+#' To produce graphics for an object of class 'mars', calling generic plot() with
+#' a mars object will dispatch the correct method for class 'mars'.
 #'
 #' @param object an object of class 'mars'
 #'
-#' @return produce 3 plots for the fitted model using basis functions:
+#' @return 3 plots for the fitted model using basis functions:
 #' Residuals vs. Fitted values plot, histogram of residuals and normal Q-Q plot
-#' of residuals
+#' of residuals.
 #' @export
 #'
 #' @examples

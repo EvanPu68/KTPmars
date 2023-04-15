@@ -17,7 +17,7 @@ a basis function matrix.
 }
 \description{
 Function which uses Bfuncs information and data frame to reproduce basis
-function matrix
+function matrix.
 }
 \examples{
     tmars <- mars(ConcreteCompressiveStrength~.,data=concrete,control =

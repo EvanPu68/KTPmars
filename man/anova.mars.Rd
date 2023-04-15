@@ -7,14 +7,16 @@
 \method{anova}{mars}(object)
 }
 \arguments{
-\item{object}{a mars object.}
+\item{object}{an object of class 'mar'.}
 }
 \value{
-anova() information regarding the mars object, similar to anova output
+anova information regarding the mars object, similar to anova output
 of an object of class 'lm', and information of Basis functions.
 }
 \description{
-To provide useful information about the basis functions.
+To provide useful information about the basis functions for an object of class
+'mar', calling generic anova() with a mars object will dispatch the correct
+method for class 'mars'.
 }
 \examples{
 mm<-mars(ConcreteCompressiveStrength~.,data=concrete,control = mars.control(

@@ -7,7 +7,8 @@
 #' the new data frame to basis function matrix and use matrix multiplication to
 #' get the predicted response vector. If no new data is provided, the default is
 #' using the mars object's basis function, which produces the predicted response
-#' same as fitted values of mars object.
+#' same as fitted values of mars object. Calling generic predict() with
+#' a mars object will dispatch the correct method for class 'mars'.
 #'
 #' @param object an object of class 'mars'.
 #' @param newdata a data frame with response and predictor variables.
@@ -61,7 +62,7 @@ predict.mars <- function(object,newdata) {
 #'
 #' @description
 #' Function which uses Bfuncs information and data frame to reproduce basis
-#' function matrix
+#' function matrix.
 #'
 #' @param X a model matrix (predictors only).
 #' @param Bfuncs a list of Bfuncs information, usually extracts from output of
