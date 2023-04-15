@@ -15,5 +15,6 @@ The files in KTPmars are:
  9.tests - a file containing test files for function correctness. 
  10.vignettes - a file containing .Rmd file for the main documentation for mars and examples.
  11.README.md
+ 12.Other files related to gituhb and Rhistory
  
 Contribution: Yifan Pu (34%), Anthony Kim (33%), Zhiran Andy Tong (33%)
