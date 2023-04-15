@@ -40,7 +40,35 @@ print(mars_object)
 | data        | a data frame containing the variables, including response and predictor variables. |  
 | control | an object of class 'mars.control': It is a list containing information of Mmax, d, trace. You can set up a 'mars.control' object using the helping function mars.control(), see help  file of mars.control() for further information. |  
 
-<h3> Details
+<h3> Details </h2>
+
+The MARS procedure is made up of several core components; the forward step-wise portion, and the backward stepwise portion. 
+The forward step-wise loop iterates to optimally split the predictor variables into ‘children’ sets that would improve the fitting of the model. This is accomplished using four nested for loops; the first 2 loops iterate over: half the number of sub-regions set by the user, the maximum number of basis functions respectively. The function only iterates over half the number of sub-regions in the first loop as a pair of basis functions will be added each time (each one signifying one region), therefore the loop only iterates a number of times equal to half of the amount of regions. The third loop will iterate over the variables available within the passed basis function for that iteration. The final loop will select the split point on the variable. this is done by applying the Generalized Cross Validation (GCV) criterion to every iteration and keeping the optimum (smallest) value.
+
+The backwards stepwise algorithm uses the Generalized Cross Validation (GCV) criterion to removes non-effective terms within the model. This is accomplished using two loops. One will iterate over the model sizes from the largest of Mmax+1. The second loop within it will aim to remove basis function while calculating lack of fit (LOF). The iteration with the lowest lack of fit in the inner loop is then compared to the other best iterations in the outer loop. The final best iteration according to the LOF will be returned as the output.
+
+Through hinge functions the linear function for each created sub-region is applied only to the appropriate data. The formula for the hinge function is:
+$h=max(0,s*(x_{v}-t))$
+Where:
+
+|               |                                                   |
+| :-------------|:--------------------------------------------------|
+|$x_{v}$| The value of a specific observation $x$ for variable $v$|
+|$t$| The splitting point for the variable $v$|
+|$s$| A multiplier to determine which side of the splitting point the hinge is being applied to. This multiplier is either 1 or -1 and results in the hinge being effectively being treated as $max(0,(x_{v}-t))$ or $max(0,(t-x_{v}))$ depending on the value of $s$|
+
+
+The GCV criterion is a measure of “lack of fit” (LOF) and is an approximation of Cross Validation. The formula for the GCV criterion is:
+$RSS\frac{N}{(N-\tilde{C}(M))^2}$
+Where:
+
+|               |                                                   |
+| :-------------|:--------------------------------------------------|
+|$N$ | The number of observations (rows) in the dataset|
+|$M$ | Number of coefficients in the fitted model -1|
+|$\tilde{C}(M)$| Is equal to $C(M)+dM$ |
+|$C(M)$| The sum of the hat-values from the fitted model|
+|$d$| The smoothing parameter, according to Friedman the default is set to 3 and can be altered through mars.control|
 
 <h3> Value </h2>
 mars returns an object of class "mars" which is similar to an object of class 'lm', with extra information on basis functions.
@@ -66,9 +94,6 @@ An object of class "mars" is a list containing at least the following informatio
 |call|the match lm function call using basis functions|
 |terms|the 'term' object that is extracted from basis functions and formula|
 |model|the model frame used|
-
-
-
 
 
 
