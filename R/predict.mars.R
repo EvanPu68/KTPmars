@@ -72,7 +72,7 @@ predict.mars <- function(object,newdata) {
 #'
 #' @examples
 #'     tmars <- mars(ConcreteCompressiveStrength~.,data=concrete,control =
-#'     mars.control(10,3,FASLE))
+#'     mars.control(10,3,FALSE))
 #'     tr <- terms(ConcreteCompressiveStrength~.,data=concrete)
 #'     tr <- delete.response(tr)
 #'     mf <- model.frame(tr,concrete)

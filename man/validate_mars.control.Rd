@@ -19,7 +19,7 @@ This function validates a list object if it is able to become an object of
 class 'mars.control'.
 }
 \examples{
-validmc <- validate_mars.control(list(Mmax=10,d=3,trace=TRUE))
+validmc <- validate_mars.control(list(Mmax=as.integer(10),d=3,trace=TRUE))
 }
 \references{
 i)

@@ -575,7 +575,7 @@ new_mars.control <- function(control) {
 #' @export
 #'
 #' @examples
-#' validmc <- validate_mars.control(list(Mmax=10,d=3,trace=TRUE))
+#' validmc <- validate_mars.control(list(Mmax=as.integer(10),d=3,trace=TRUE))
 #' @references
 #'
 #' i)

@@ -15,6 +15,8 @@
 #' Mmax=10,d=3,trace=FALSE))
 #' plots <- plot(mm)
 #'
+#' @import graphics
+#'
 #' @references
 #'
 #' i)
