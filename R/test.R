@@ -2,7 +2,7 @@
 # five methods of class 'mars'.
 # library(devtools) #uncomment to run
 # load_all() #uncomment to run
-
+# All data sets are within package KTPmars
 #################################Example 1######################################
 data(concrete)#read data concrete within the package KTPmars, use ?concrete
 #                                                      for more information
